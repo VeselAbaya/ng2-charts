@@ -1,0 +1,51 @@
+:host {
+  display: flex;
+  position: relative;
+}
+
+.chart-legend {
+  padding-left: 0;
+  list-style: none;
+
+  &__label {
+    margin-bottom: 6px;
+    font-size: 14px;
+
+    &-color {
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      margin-right: 10px;
+
+      transition: background-color 200ms;
+    }
+  }
+
+  &__label-button {
+    display: flex;
+    background-color: transparent;
+    border: none;
+
+    cursor: pointer;
+    transition: color 200ms;
+
+    &--active {
+      color: #58C2F1
+    }
+
+    &--default {
+      color: #E6E6E6
+    }
+  }
+}
+
+.chart-wrapper {
+  width: 80%;
+}
+
+app-loader {
+  position: absolute;
+  top: 45%;
+  left: 43%;
+  transform: translate(-50%, -50%);
+}

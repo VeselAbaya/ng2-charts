@@ -1,0 +1,41 @@
+<div class="chart-wrapper">
+  <canvas baseChart
+          [datasets]="datasets"
+          [labels]="labels"
+          [colors]="colors"
+          [options]="chartOptions"
+          chartType="doughnut"></canvas>
+
+  <div class="absolute" *ngIf="activeDataIndex !== null">
+    <p class="absolute__value">{{datasets[0].data[activeDataIndex]}}</p>
+    <p class="absolute__label">{{labels[activeDataIndex]}}</p>
+  </div>
+</div>
+
+<ul class="chart-legend" *ngIf="labels && labels.length; else labelsLoader">
+  <li class="chart-legend__label" *ngFor="let rawDataset of rawDatasets; let i = index"
+      (mouseover)="onLabelHover(rawDataset.details.title)"
+      (mouseleave)="onLabelHover(null)">
+    <span class="chart-legend__label-color" [ngStyle]="{'background-color': rawDataset.details.color}"></span>
+    <span class="chart-legend__label-percent" [ngClass]="{'chart-legend__label-percent--active': activeDataIndex === i}">
+      {{rawDataset.value/allTestsCount | percent:'.2'}}
+    </span>
+    <span class="chart-legend__label-title" [ngClass]="{'chart-legend__label-title--active': activeDataIndex === i}">
+      {{rawDataset.details.title}}
+    </span>
+  </li>
+</ul>
+
+<ng-template #labelsLoader>
+  <ul class="chart-legend">
+    <li class="chart-legend__label">
+      <span class="chart-legend__label-color chart-legend__label-color--loader"></span>
+    </li>
+    <li class="chart-legend__label">
+      <span class="chart-legend__label-color chart-legend__label-color--loader"></span>
+    </li>
+    <li class="chart-legend__label">
+      <span class="chart-legend__label-color chart-legend__label-color--loader"></span>
+    </li>
+  </ul>
+</ng-template>

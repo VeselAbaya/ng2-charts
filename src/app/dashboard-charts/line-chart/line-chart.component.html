@@ -1,0 +1,22 @@
+<div class="chart-wrapper">
+  <canvas baseChart
+          [datasets]="datasets"
+          [labels]="labels"
+          [options]="chartOptions"
+          chartType="line"></canvas>
+</div>
+
+<app-loader *ngIf="!rawDatasets || !rawDatasets.length"></app-loader>
+
+<ul class="chart-legend" *ngIf="rawDatasets && rawDatasets.length">
+  <li class="chart-legend__label" *ngFor="let dataset of baseChartDirective.datasets; let i = index" (click)="onLegendLabelClick(i)">
+    <button class="chart-legend__label-button"
+            [ngClass]="{
+              'chart-legend__label-button--active': this.activeDatasetIndex === i,
+              'chart-legend__label-button--default': this.activeDatasetIndex !== null && this.activeDatasetIndex !== i
+            }">
+      <span class="chart-legend__label-color" [ngStyle]="{'background-color': dataset.borderColor}"></span>
+      {{dataset.label}}
+    </button>
+  </li>
+</ul>

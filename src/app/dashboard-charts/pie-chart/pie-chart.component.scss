@@ -1,0 +1,81 @@
+:host {
+  display: flex;
+}
+
+.chart {
+  &-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 50%;
+  }
+
+  &-legend {
+    width: 50%;
+    padding-left: 0;
+    line-height: 17px;
+
+    &__label {
+      display: flex;
+      margin-bottom: 6px;
+
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    &__label-color {
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      margin-right: 5px;
+
+      transition: background-color 200ms;
+
+      &--loader {
+        background-color: #DCE1E3;
+      }
+    }
+
+    &__label-percent {
+      margin-right: 7px;
+      min-width: 37px;
+
+      font-size: 12px;
+      line-height: 17px;
+      color: #52616B;
+      transition: color 200ms;
+
+      &--active {
+        color: #58C2F1;
+      }
+    }
+
+    &__label-title {
+      transition: color 200ms;
+      &--active {
+        color: #58C2F1;
+      }
+    }
+  }
+}
+
+.absolute {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+
+  &__value {
+    margin: 0;
+    font-size: 24px;
+    line-height: 24px;
+  }
+
+  &__label {
+    margin: 0;
+    font-size: 14px;
+    line-height: 14px;
+  }
+}
